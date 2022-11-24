@@ -1,13 +1,18 @@
 require 'rails_helper'
 
 RSpec.feature "Projects", type: :feature do
+  
+
   context "Create new project" do
     before(:each) do
+      testUser = FactoryBot.create(:user)
       visit new_project_path
+      sign_in testUser
+      puts testUser.email
       within("form") do
         fill_in "Title", with: "Test title"
       end
-    end
+    end 
 
     scenario "should be successful" do
       fill_in "Description", with: "Test description"
@@ -24,6 +29,8 @@ RSpec.feature "Projects", type: :feature do
   context "Update project" do
     let(:project) { Project.create(title: "Test title", description: "Test content") }
     before(:each) do
+      testUser = FactoryBot.create(:user)
+      sign_in testUser
       visit edit_project_path(project)
     end
 
@@ -47,6 +54,8 @@ RSpec.feature "Projects", type: :feature do
   context "Remove existing project" do
     let!(:project) { Project.create(title: "Test title", description: "Test content") }
     scenario "remove project" do
+      testUser = FactoryBot.create(:user)
+      sign_in testUser
       visit project_path(project)
       click_button "Destroy this project"
       expect(page).to have_content("Project was successfully destroyed")
