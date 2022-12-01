@@ -45,6 +45,12 @@ end
 gem "tzinfo-data"
 gem "tzinfo"
 
+#bootstrap gem
+gem 'bootstrap', '~> 5.2.2'
+
+#jquery support for bootstrap calls
+gem 'jquery-rails'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
