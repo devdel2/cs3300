@@ -1,10 +1,18 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @project %>
+<div class="card m-4 w-50 mx-auto" style="width: 18rem;">
+  <div class="card-body">
+    <%= render @project %>
+  </div>
 
-<div>
-  <%= link_to "Edit this project", edit_project_path(@project) %> |
-  <%= link_to "Back to projects", projects_path %>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><%= link_to "Back to projects", projects_path %></li>
+    <li class="list-group-item"><%= link_to "Edit this project", edit_project_path(@project) %></li>
+    <li class="mx-auto w-50 list-group-item"><%= button_to "Destroy this project", @project, class: "btn btn-danger my-2", method: :delete %></li>
+    
+  </div>
 
-  <%= button_to "Destroy this project", @project, method: :delete %>
 </div>
+
+
+

@@ -1,17 +1,19 @@
-<h1>Projects</h1>
+<h1>Dev&#39;s Projects</h1>
 
 <p style="color: green"><%= notice %></p>
-
-<!-- create a for loop here to iterate over the number of projects -->
-<!-- be sure to setup logic for limiting number of projects per row -->
-
-<div id="projects">
+<%= link_to "New project", new_project_path %>
+<div id="projects" class="d-flex mt-4">
+<hr>
   <% @projects.each do |project| %>
-    <%= render project %>
-    <p>
-      <%= link_to "Show this project", project %>
-    </p>
+
+    <div class="card m-4 w-50 " style="width: 18rem;">
+      <div class="card-body h-25 overflow-hidden">
+        <%= render project %>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= link_to "See more", project %></li>
+      </ul>
+    </div>
+
   <% end %>
 </div>
-
-<%= link_to "New project", new_project_path %>
